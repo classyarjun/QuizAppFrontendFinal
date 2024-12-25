@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg shadow-lg p-3 fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="../../assets/logo-openfuture/Image.jpeg.jpg" width="170" alt="logo" class="logo p-3" />
+      </a>
+      <div class="d-flex align-items-center gap-4">
+        <span class="nav-link fw-bold">Time Start: {{ countdownDisplay }}</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-md-5 py-4">
+    <div class="quiz-container mx-auto">
+      <form id="quizForm">
+        <!-- Loading State -->
+        <div *ngIf="loading" class="text-center">
+          <p>Loading questions...</p>
+        </div>
+
+        <!-- Questions Section -->
+        <div *ngIf="!loading">
+          <div *ngFor="let question of questions; let i = index" class="mb-4 question">
+            <pre>{{ i + 1 }}. {{ question.questionText }}</pre>
+            <div *ngFor="let option of question.options" class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                [name]="'q' + question.id"
+                [value]="option"
+                id="{{ 'q' + question.id + option }}"
+                [(ngModel)]="userAnswers[question.id]"
+                (click)="onOptionClick(question.id, option)"
+              />
+              <label class="form-check-label" [for]="'q' + question.id + option">
+                {{ option }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+          <button
+            type="button"
+            class="btn btn-primary fw-bold p-2 px-4"
+            (click)="onSubmit()">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

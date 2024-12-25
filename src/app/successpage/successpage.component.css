@@ -1,0 +1,70 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #d1d8e0 0%, #f1f3f5 100%); /* Light professional gradient */
+    color: #333; /* Dark text for readability */
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Softer shadow for professionalism */
+    background-color: #ffffff; /* Clean white background for the content */
+    max-width: 600px;
+    width: 90%;
+}
+
+/* Title Styles */
+.title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #333; /* Dark text for title */
+    margin-bottom: 15px;
+}
+
+/* Message Styles */
+.message {
+    font-size: 1.4rem;
+    color: #555; /* Softer gray color for message */
+    margin-top: 10px;
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007bff; /* Professional blue color */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+    transform: translateY(-4px); /* Subtle hover effect */
+}
+
+/* Keyframes for smooth fade-in */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

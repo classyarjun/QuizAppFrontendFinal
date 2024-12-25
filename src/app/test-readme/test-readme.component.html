@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg shadow-lg p-3 fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="../../assets/logo-openfuture/Image.jpeg.jpg" width="170" alt="logo" class="logo logo-display p-1">
+      </a>
+
+      <a class="nav-link fw-bold" aria-current="page">Online Assessment</a>
+    </div>
+  </nav>
+
+  <div class="d-flex justify-content-center align-items-center mt-md-5 py-4">
+    <div class="container my-5">
+      <!-- Certification Banner -->
+      <div class="certification-badge">
+        <strong>Certification</strong>
+        <p class="mb-0">We will issue you a free certificate of achievement
+          <a href="#" class="text-decoration-none text-success">if you score in the top <strong>80%</strong></a>
+        </p>
+      </div>
+
+      <!-- Main Box -->
+      <div class="custom-box">
+        <!-- Duration -->
+        <div class="mb-4">
+          <div class="justify-content-between">
+            <div><strong>⏲ Time Duration</strong></div>
+            <div class="ms-4">55 minutes <small>(Total time to attempt the assessment)</small></div>
+          </div>
+        </div>
+
+        <!-- Question Range Line -->
+        <div class="mb-4">
+          <p class="text-danger">
+            <strong>Total Question : 45</strong><br>
+            <strong>Question Ranges:</strong>
+
+
+          </p>
+            <ul class="list-unstyled ms-4">
+              <li><strong>01-15     : </strong> Quantitative Aptitude</li>
+              <li><strong>16-30 :</strong> Reasoning</li>
+              <li><strong>31-45 :</strong> Coding</li>
+            </ul>
+
+        </div>
+
+
+        <!-- Do and Don't -->
+        <div class="mb-4">
+          <p class="text-success mb-1">✔ <strong>Do</strong></p>
+          <p class="ms-4">You are permitted to use common references and tools, such as help files or a calculator.</p>
+
+          <p class="text-danger mb-1">✖ <strong>Don't</strong></p>
+
+          <!-- <p class="ms-4">
+            You are not permitted to seek or submit solutions from any other source. <br>
+            Do not copy or share any test content with any other website or person.
+          </p>
+
+          <p class="ms-4">
+            Dont try to refresh page otherwise, you will be blocked from the
+            assessment. . <br>
+          </p> -->
+
+
+          <ul class="ms-4">
+            <li> You are not permitted to seek or submit solutions from any other source. <br>
+                 Do not copy or share any test content with any other website or person.</li>
+            <li>Do not try to refresh page otherwise, you will be blocked from the
+              assessment.</li>
+          </ul>
+
+        </div>
+
+        <!-- Preparation -->
+        <div class="mb-4">
+          <p><strong>🖥 Read the rules carefully before starting</strong></p>
+          <ul class="ms-4">
+            <li>You can only attempt this assessment once.</li>
+            <li>You will not be able to pause the assessment after starting.</li>
+            <li>You are not allowed to switch tabs during the assessment; otherwise, you will be blocked from the
+              assessment.</li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="form-check mb-3 ms-4">
+          <input type="checkbox" class="form-check-input" id="legalAgreement" [(ngModel)]="isAgreed">
+          <label class="form-check-label terms-text" for="legalAgreement">
+            I have read and agree to the above 
+            <a class="text-decoration-none">terms of use</a> and
+            <a class="text-decoration-none">privacy policy</a>.
+          </label>
+        </div>
+
+        <!-- Start Button -->
+        <div class="text-center">
+          <button class="btn btn-primary px-4 py-2" (click)="navigateToAbout()" [disabled]="!isAgreed">
+            Start Assessment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="text-center">
+      <img
+        src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
+        alt="Admin"
+      />
+      <h5>Admin</h5>
+    </div>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin-dashboard">
+          <i class="fa fa-home"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin-all-users">
+          <i class="fa fa-user"></i> Students
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <div class="content-wrapper">
+    <!-- Topbar -->
+    <div class="topbar">
+      <img src="../../assets/logo-openfuture/Image.jpeg.jpg" alt="Logo" />
+      <button class="logout-btn" (click)="logout()">
+        <img
+          src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
+          alt="User"
+        />
+        Log Out
+      </button>
+    </div>
+
+    <!-- Card Section -->
+    <div class="card">
+      <div class="card-header">
+        Available Students
+        <input
+        type="text"
+        class="form-control"
+        placeholder="Search by domain (e.g., IT, Marketing)"
+        [(ngModel)]="searchQuery"
+        (input)="filterByDomain()"
+        aria-label="Search by domain"
+      />
+
+
+
+        <!-- New Search Bar for Status -->
+        <input
+          type="text"
+          class="form-control mt-2"
+          placeholder="Search by status"
+          [(ngModel)]="statusQuery"
+          (input)="filterByStatus()"
+        />
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Domain</th>
+              <th>Score</th>
+              <th>Attempt Questions</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let score of filteredUserScores; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ score.name }}</td>
+              <td>{{ score.email }}</td>
+              <td>{{ score.contactNo || 'N/A' }}</td>
+              <td>{{ score.domain }}</td>
+              <td>{{ score.score }}</td>
+              <td>{{ score.attemptQuestions }}</td>
+              <td>{{ score.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

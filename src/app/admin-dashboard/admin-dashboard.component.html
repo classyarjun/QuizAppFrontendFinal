@@ -1,0 +1,169 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="col-12 col-md-4 col-lg-2 sidebar bg-dark sticky-top p-3">
+      <div class="text-center my-3">
+        <img class="img-fluid rounded-circle" width="80"
+          src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
+          alt="Admin" />
+        <h5 class="text-white mt-2">Admin</h5>
+      </div>
+      <hr class="text-white" />
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a class="nav-link bg-white text-black rounded py-2" routerLink="/admin-dashboard">
+            <i class="fa fa-briefcase text-warning me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link bg-white text-black rounded py-2" routerLink="/admin-all-users">
+            <i class="fa fa-users text-warning me-2"></i> Student
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="col-12 col-md-8 col-lg-10 p-0">
+      <!-- !Topbar -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center bg-light py-3 px-3 border-bottom">
+        <div class="mb-2">
+          <img src="../../assets/logo-openfuture/Image.jpeg.jpg" class="img-fluid" width="120" alt="Logo" />
+        </div>
+        <button class="btn btn-outline-dark btn-sm d-flex align-items-center" (click)="logout()">
+          <img src="https://thumbs.dreamstime.com/b/customer-support-service-agent-headset-flat-vector-icon-design-designs-153069456.jpg"
+            class="rounded-circle me-2" width="30" height="30" alt="User" />
+          Log Out
+        </button>
+      </div>
+
+      <!-- Dashboard Content -->
+      <div class="content p-3">
+        <!-- Modal Trigger -->
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+          <h5 class="text-primary">Available Questions</h5>
+          <button class="btn btn-danger mt-2 mt-md-0" data-bs-toggle="modal" data-bs-target="#CreateModal">
+            + Add Question
+          </button>
+        </div>
+
+        <!-- Questions Table -->
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Domain</th>
+                <th>Question Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of questions; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ question.questionText }}</td>
+                <td>{{ question.correctAnswer }}</td>
+                <td>{{ question.domain }}</td>
+                <td>{{ question.questionType }}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="onDelete(question.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Adding Questions -->
+<div class="modal fade" id="CreateModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLabel">Add Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+          <!-- <div class="mb-3">
+            <label for="questionText" class="form-label">Question Text:</label>
+            <input id="questionText" type="text" formControlName="questionText" class="form-control"
+              placeholder="Enter question" />
+          </div> -->
+
+          <div>
+            <label>Question Text:</label>
+            <textarea formControlName="questionText" placeholder=" Type Question here..."></textarea>
+          </div>
+
+          <div formArrayName="options" class="mb-3">
+            <div *ngFor="let option of options.controls; let i = index" [formGroupName]="i" class="mb-2">
+              <label>Option {{ i + 1 }}:</label>
+              <input type="text" formControlName="option" class="form-control" placeholder="Enter option" />
+              <button type="button" (click)="removeOption(i)" class="btn btn-sm btn-danger mt-1"
+                *ngIf="options.length > 1">Remove</button>
+            </div>
+            <button type="button" (click)="addOption()" class="btn btn-sm btn-primary mt-2">Add Option</button>
+          </div>
+          <div class="mb-3">
+            <label for="correctAnswer" class="form-label">Correct Answer:</label>
+            <input id="correctAnswer" type="text" formControlName="correctAnswer" class="form-control"
+              placeholder="Correct answer" />
+          </div>
+
+          <div class="mb-3">
+            <label for="domain" class="form-label">Domain:</label>
+            <input id="domain" type="text" formControlName="domain" class="form-control"
+              placeholder="Enter domain e.g., Java" />
+          </div>
+
+          <div class="mb-3">
+            <label for="questionType" class="form-label">Question type:</label>
+            <select formControlName="questionType" id="questionType" class="form-control">
+              <option value="" selected>Select a Question type</option>
+              <option value="APTITUDE">APTITUDE</option>
+              <option value="LOGICAL_REASONING">LOGICAL_REASONING</option>
+              <option value="CODE">CODE</option>
+            </select>
+          </div>
+          <button type="submit" [disabled]="!questionForm.valid" class="btn btn-success w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Responsive Styles -->
+<style>
+  @media (max-width: 768px) {
+    .sidebar {
+      height: auto;
+      position: relative;
+    }
+
+    .topbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .content {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .topbar {
+      text-align: center;
+    }
+
+    .btn {
+      font-size: 0.85rem;
+      padding: 0.5rem;
+    }
+  }
+</style>
+
