@@ -67,4 +67,29 @@ export class AdminAllUsersComponent  implements OnInit {
       this.router.navigate(['']); // Adjust the path as needed
     }
   }
+
+
+//? testing the code
+
+deleteUser(id: number): void {
+  const confirmDelete = confirm('Are you sure you want to delete this user score?');
+  if (confirmDelete) {
+    this.userScoreService.deleteUserScore(id).subscribe({
+      next: () => {
+        // Success response: Remove the deleted item from the local list
+        this.userScores = this.userScores.filter(score => score.id !== id);
+        this.filteredUserScores = this.filteredUserScores.filter(score => score.id !== id);
+        console.log(`User score with ID ${id} deleted successfully.`);
+      },
+      error: (error) => {
+        // Error handling
+        console.error('Failed to delete user score:', error);
+        alert('Failed to delete user score. Please try again later.');
+      }
+    });
+  }
+}
+
+
+
 }

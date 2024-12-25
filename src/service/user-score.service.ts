@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserScore } from 'src/modal/user-score';
 import { environment } from 'src/Environment/environment';
@@ -11,7 +11,6 @@ const NAV_URL = environment.apiUrl;
 })
 
 export class UserScoreService {
-
 
   // private apiUrl = 'http://localhost:8080/api/userscore'; // Backend API endpoint
 
@@ -37,8 +36,10 @@ export class UserScoreService {
     return this.http.put<UserScore>(`${NAV_URL}/userscore/${id}`, userScore);
   }
 
-  // Delete a User Score
   deleteUserScore(id: number): Observable<void> {
-    return this.http.delete<void>(`${NAV_URL}/userscore/${id}`);
+    return this.http.delete<void>(`${NAV_URL}/userscore/delete/${id}`);
   }
+
+
+
 }

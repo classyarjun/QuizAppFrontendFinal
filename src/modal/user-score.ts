@@ -5,7 +5,7 @@ export enum Status {
 }
 
 export interface UserScore {
-  id?: number; // Optional for new users
+  id: number; // Optional for new users
   name: string;
   domain: string;
   email: string;

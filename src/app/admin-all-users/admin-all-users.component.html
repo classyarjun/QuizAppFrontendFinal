@@ -71,8 +71,10 @@
               <th>Contact</th>
               <th>Domain</th>
               <th>Score</th>
+              <th>Correct Ans </th>
               <th>Attempt Questions</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -83,12 +85,18 @@
               <td>{{ score.contactNo || 'N/A' }}</td>
               <td>{{ score.domain }}</td>
               <td>{{ score.score }}</td>
+              <td>{{score.correctAnswers}}</td>
               <td>{{ score.attemptQuestions }}</td>
               <td>{{ score.status }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteUser(score.id)">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+
+
     </div>
   </div>
 </div>
