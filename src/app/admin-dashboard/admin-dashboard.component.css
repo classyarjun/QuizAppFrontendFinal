@@ -19,19 +19,9 @@
     box-sizing: border-box;
   }
 
-  button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
 
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+
+
 
   .large-dropdown {
     width: 100%; /* Adjust the width as needed */
